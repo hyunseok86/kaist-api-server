@@ -10,8 +10,7 @@ class HealthController {
 	@GetMapping("/health")
 	public ResponseEntity<String> health() {
 		return ResponseEntity.ok("OK");
-	}
-
+	}     
 	@GetMapping("/")
 	public RedirectView index() {
 		return new RedirectView("/swagger-ui/index.html");
