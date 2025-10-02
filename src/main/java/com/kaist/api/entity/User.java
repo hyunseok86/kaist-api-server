@@ -39,7 +39,7 @@ public class User {
 	@Column(length = 30, nullable = true)
 	private String email;
 
-	@Column(length = 100, nullable = true)
+	@Column(length = 600, nullable = true)
 	private String token;
 
 	@CreationTimestamp // 시간 자동입력
