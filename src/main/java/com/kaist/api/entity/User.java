@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -42,8 +43,12 @@ public class User {
 	@Column(length = 600, nullable = true)
 	private String token;
 
-	@CreationTimestamp // 시간 자동입력
-	private Timestamp crateDate;
+	@Column(length = 10, nullable = true)
+	private Role role;
 
-    
+	@CreationTimestamp // 시간 자동입력
+	private Timestamp crDt;
+
+	@UpdateTimestamp // 시간 자동입력
+	private Timestamp upDt;
 }
