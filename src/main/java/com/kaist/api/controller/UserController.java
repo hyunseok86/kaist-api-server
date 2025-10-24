@@ -4,6 +4,7 @@ import com.kaist.api.dto.ErrorResponse;
 import com.kaist.api.dto.UserResponse;
 import com.kaist.api.dto.UserSearchRequest;
 import com.kaist.api.dto.UserSearchResponse;
+import com.kaist.api.mapper.UserMapper;
 import com.kaist.api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +21,16 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
+
+    @GetMapping("/mybatis/{userId}")
+    public ResponseEntity<?> getUser2(@PathVariable String userId) {
+        List<java.util.HashMap<String, Object>> userList = userMapper.findByUserId(userId);
+        if (userList == null || userList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(userList);
+    }
 
     @GetMapping("/{userId}")
     public ResponseEntity<?> getUser(@PathVariable String userId) {

@@ -17,6 +17,7 @@ public class CommunityResponse {
     private String summary;
     private String status;
     private String type;
+    private byte[] image;
     private Timestamp crDt;
     private Timestamp upDt;
 }
